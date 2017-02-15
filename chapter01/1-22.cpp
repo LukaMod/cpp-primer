@@ -5,19 +5,19 @@ int main()
 {
 	Sales_item total;
 	if (std::cin >> total) {
-		Sales_item item;
-		while (std::cin >> item) {
-			if (item.isbn() == total.isbn())
-				total += item;
+		Sales_item trans;
+		while (std::cin >> trans) {
+			if (trans.isbn() == total.isbn())
+				total += trans;
 			else {
 				std::cout << total << std::endl;
-				total = item;
+				total = trans;
 			}
 		}
 		std::cout << total << std::endl;
 	}
 	else {
-		std::cout << "No data" << std::endl;
+		std::cout << "No data?!" << std::endl;
 		return -1;
 	}
 	return 0;
