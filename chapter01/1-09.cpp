@@ -5,8 +5,8 @@ int main()
 
     while (val <= 100)
     {
-		sum += val;
-		++val;
+	sum += val;
+	++val;
     }
     std::cout << "Sum of 50 to 100 inclusive is "
 	      << sum << std::endl;
