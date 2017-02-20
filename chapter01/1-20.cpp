@@ -3,9 +3,8 @@
 
 int main()
 {
-	Sales_item item;
-	while (std::cin >> item)
-		std::cout << item << std::endl;
-	return 0;
+    Sales_item item;
+    while (std::cin >> item)
+	std::cout << item << std::endl;
+    return 0;
 }
-
