@@ -8,9 +8,11 @@ using std::end;
 
 int main()
 {
-    int a[] = {1, 2, 3, 4, 5, 6};
-    vector<int> vec(begin(a), end(a));
-    for (int i : vec)
+    vector<int> vec = {1, 2, 3, 4, 5, 6, 7};
+    int a[7];
+    for (int *p = begin(a); p != end(a); ++p)
+        *p = vec[p - begin(a)];
+    for (auto i : a)
         cout << i << " ";
     cout << endl;
     return 0;
