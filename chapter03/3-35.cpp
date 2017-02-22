@@ -12,9 +12,9 @@ int main()
     int *beg = begin(ia);
     int *last = end(ia);
     for (; beg != last; ++beg)
-	*beg = 0;
+        *beg = 0;
     for (auto i : ia)
-	cout << i << " ";
+        cout << i << " ";
     cout << endl;
     return 0;
 }

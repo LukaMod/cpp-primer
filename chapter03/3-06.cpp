@@ -9,7 +9,7 @@ int main()
 {
     string str("An sample string");
     for (auto &c : str)
-	c = 'X';
+        c = 'X';
     cout << str << endl;
     return 0;
 }

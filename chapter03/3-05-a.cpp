@@ -11,7 +11,7 @@ int main()
     string largeStr, str;
     while (cin >> str)
     {
-	largeStr += str;
+        largeStr += str;
     }
     cout << "The concatenated string: " largeStr << endl;
     return 0;

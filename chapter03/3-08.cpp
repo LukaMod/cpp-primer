@@ -12,13 +12,13 @@ int main()
 
     while (i != str.size())
     {
-	str[i] = 'X';
-	++i;
+        str[i] = 'X';
+        ++i;
     }
     cout << str << endl;
 
     for (i = 0; i != str.size(); ++i)
-	str[i] = 'Y';
+        str[i] = 'Y';
     cout << str << endl;
 
     return 0;

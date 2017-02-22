@@ -12,8 +12,8 @@ int main()
     getline(cin, str);
     for (auto c : str)
     {
-	if (!ispunct(c))
-	    cout << c;
+        if (!ispunct(c))
+            cout << c;
     }
     cout << endl;
     return 0;

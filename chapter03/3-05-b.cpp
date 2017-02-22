@@ -11,10 +11,10 @@ int main()
     string largeStr, str;
     while (cin >> str)
     {
-	if (largeStr.empty())
-	    largeStr += str;
-	else
-	    largeStr += " " + str;
+        if (largeStr.empty())
+            largeStr += str;
+        else
+            largeStr += " " + str;
     }
     cout << "The concatenated string: " largeStr << endl;
     return 0;

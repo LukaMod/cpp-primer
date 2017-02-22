@@ -10,7 +10,7 @@ int main()
     vector<string> vec;
     string str;
     while (cin >> str)
-	vec.push_back(str);
+        vec.push_back(str);
 
     return 0;
 }

@@ -12,10 +12,10 @@ int main()
     unsigned grade;
     while (cin >> grade)
     {
-	++*(scores.begin() + grade / 10);
+        ++*(scores.begin() + grade / 10);
     }
     for (auto i : scores)
-	cout << i << " ";
+        cout << i << " ";
     cout << endl;
 
     return 0;

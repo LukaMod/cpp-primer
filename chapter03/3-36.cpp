@@ -19,25 +19,25 @@ int main()
     bool isEqual = true;
 
     if (last1 - beg1 != last2 - beg2)
-	isEqual = false;
+        isEqual = false;
     else
     {
-	while (beg1 != last1 && beg2 != last2)
-	    if (*beg1++ != *beg2++)
-		isEqual = false;
+        while (beg1 != last1 && beg2 != last2)
+            if (*beg1++ != *beg2++)
+                isEqual = false;
     }
 
     if (isEqual)
-	cout << "The two arrays are equal." << endl;
+        cout << "The two arrays are equal." << endl;
     else
-	cout << "The two arrays are not equal." << endl;
+        cout << "The two arrays are not equal." << endl;
 
     vector<int> ivec1 = {1, 2, 3};
     vector<int> ivec2 = {1, 2, 3};
     if (ivec1 == ivec2)
-	cout << "The two vectors are equal." << endl;
+        cout << "The two vectors are equal." << endl;
     else
-	cout << "The two vectors are not equal." << endl;
+        cout << "The two vectors are not equal." << endl;
 
     return 0;
 }

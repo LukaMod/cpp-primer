@@ -8,7 +8,7 @@ int main()
     vector<int> vec;
     int v;
     while (cin >> v)
-	vec.push_back(v);
+        vec.push_back(v);
 
     return 0;
 }
