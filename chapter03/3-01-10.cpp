@@ -7,8 +7,8 @@ int main()
     int v = 10;
     while (v >= 0)
     {
-	cout << v << endl;
-	--v;
+        cout << v << endl;
+        --v;
     }
     return 0;
 }

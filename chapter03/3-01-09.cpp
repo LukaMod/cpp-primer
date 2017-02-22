@@ -8,10 +8,10 @@ int main()
 
     while (val <= 100)
     {
-	sum += val;
-	++val;
+        sum += val;
+        ++val;
     }
     cout << "Sum of 50 to 100 inclusive is "
-	 << sum << endl;
+         << sum << endl;
     return 0;
 }
