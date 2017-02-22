@@ -14,9 +14,9 @@ int main()
     double price;
     while (std::cin >> data.bookNo >> data.units_sold >> price)
     {
-	data.revenue = data.units_sold * price;
-	std::cout << data.bookNo << " " << data.units_sold << " "
-		  << data.revenue << " " << price << std::endl;
+        data.revenue = data.units_sold * price;
+        std::cout << data.bookNo << " " << data.units_sold << " "
+                  << data.revenue << " " << price << std::endl;
     }
     return 0;
 }

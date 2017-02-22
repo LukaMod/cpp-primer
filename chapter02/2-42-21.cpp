@@ -11,18 +11,18 @@ int main()
     data2.revenue = data2.units_sold * price2;
     if (data1.bookNo == data2.bookNo)
     {
-	unsigned units_sold = data1.units_sold + data2.units_sold;
-	double revenue = data1.revenue + data2.revenue;
-	std::cout << data1.bookNo << " " << units_sold << " " << revenue << " ";
-	if (units_sold)
-	    std::cout << revenue / units_sold << std::endl;
-	else
-	    std::cout << "(no sales)" << std::endl;
+        unsigned units_sold = data1.units_sold + data2.units_sold;
+        double revenue = data1.revenue + data2.revenue;
+        std::cout << data1.bookNo << " " << units_sold << " " << revenue << " ";
+        if (units_sold)
+            std::cout << revenue / units_sold << std::endl;
+        else
+            std::cout << "(no sales)" << std::endl;
     }
     else
     {
-	std::cerr << "Data must refer to same ISBN" << std::endl;
-	return -1;
+        std::cerr << "Data must refer to same ISBN" << std::endl;
+        return -1;
     }
 
     return 0;
