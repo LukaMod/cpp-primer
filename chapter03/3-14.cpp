@@ -5,10 +5,10 @@ using std::cin;
 
 int main()
 {
-	vector<int> vec;
-	int v;
-	while (cin >> v)
-		vec.push_back(v);
+    vector<int> vec;
+    int v;
+    while (cin >> v)
+	vec.push_back(v);
 
-	return 0;
+    return 0;
 }

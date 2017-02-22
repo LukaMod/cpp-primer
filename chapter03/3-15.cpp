@@ -7,10 +7,10 @@ using std::cin;
 
 int main()
 {
-	vector<string> vec;
-	string str;
-	while (cin >> str)
-		vec.push_back(str);
+    vector<string> vec;
+    string str;
+    while (cin >> str)
+	vec.push_back(str);
 
-	return 0;
+    return 0;
 }

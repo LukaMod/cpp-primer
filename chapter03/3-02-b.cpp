@@ -8,9 +8,9 @@ using std::endl;
 
 int main()
 {
-	string word;
-	cin >> word;
-	cout << word << endl;
-	
-	return 0;
+    string word;
+    cin >> word;
+    cout << word << endl;
+
+    return 0;
 }

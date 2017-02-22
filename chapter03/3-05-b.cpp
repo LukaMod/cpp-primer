@@ -8,13 +8,14 @@ using std::endl;
 
 int main()
 {
-	string largeStr, str;
-	while (cin >> str) {
-		if (largeStr.empty())
-			largeStr += str;
-		else
-			largeStr += " " + str;
-	}
-	cout << "The concatenated string: " largeStr << endl;
-	return 0;
+    string largeStr, str;
+    while (cin >> str)
+    {
+	if (largeStr.empty())
+	    largeStr += str;
+	else
+	    largeStr += " " + str;
+    }
+    cout << "The concatenated string: " largeStr << endl;
+    return 0;
 }
