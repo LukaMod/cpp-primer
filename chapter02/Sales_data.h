@@ -1,5 +1,5 @@
-#ifndef SALES_DATA_H
-#define SALES_DATA_H
+#ifndef SALES_DATA_H_
+#define SALES_DATA_H_
 
 #include <string>
 
