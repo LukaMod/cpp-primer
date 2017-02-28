@@ -2,31 +2,28 @@
 #define EX_7_15_H
 
 #include <string>
-using std::string;
-using std::istream;
-using std::ostream;
 
 struct Person
 {
     Person() = default;
-    Person(const string &sname) : name(sname) {}
-    Person(const string &sname, const string &saddr) : name(sname), address(saddr) {}
-    Person(istream &is) { read(is, *this); }
+    Person(const std::string &sname) : name(sname) {}
+    Person(const std::string &sname, const std::string &saddr) : name(sname), address(saddr) {}
+    Person(std::istream &is) { read(is, *this); }
 
-    string name;
-    string address;
+    std::string name;
+    std::string address;
 
-    const string &getName() const { return name; }
-    const string &getAddress() const { return address; }
+    const std::string &getName() const { return name; }
+    const std::string &getAddress() const { return address; }
 };
 
-istream &read(istream &is, Person &item)
+std::istream &read(std::istream &is, Person &item)
 {
     is >> item.name >> item.address;
     return is;
 }
 
-ostream &print(ostream &os, const Person &item)
+std::ostream &print(std::ostream &os, const Person &item)
 {
     os << item.getName() << " " << item.getAddress();
     return os;

@@ -2,15 +2,14 @@
 #define EX_7_05_H
 
 #include <string>
-using std::string;
 
 struct Person
 {
-    string name;
-    string address;
+    std::string name;
+    std::string address;
 
-    const string &getName() const { return name; }
-    const string &getAddress() const { return address; }
+    const std::string &getName() const { return name; }
+    const std::string &getAddress() const { return address; }
 };
 
 #endif
