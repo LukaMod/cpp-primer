@@ -1,14 +1,16 @@
 #include <iostream>
 #include <string>
+using std::istream;
 using std::cin;
 using std::cout;
+using std::endl;
 using std::string;
 
-std::istream &func(std::istream &is)
+istream &func(istream &is)
 {
-    std::string buf;
+    string buf;
     while (!(is >> buf).eof())
-        std::cout << buf << std::endl;
+        cout << buf << endl;
     is.clear();
     return is;
 }
@@ -17,7 +19,7 @@ int main()
 {
     string str;
     func(cin) >> str;
-    cout << str << std::endl;
+    cout << str << endl;
 
     return 0;
 }
