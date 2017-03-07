@@ -2,6 +2,7 @@
 #define EX_7_41_H_
 
 #include <string>
+#include <iostream>
 
 class Sales_data
 {
