@@ -12,6 +12,7 @@ using std::unique;
 using std::stable_sort;
 using std::find_if;
 using std::for_each;
+
 void elimDups(vector<string> &words)
 {
     sort(words.begin(), words.end());
