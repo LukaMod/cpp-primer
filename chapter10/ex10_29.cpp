@@ -8,12 +8,11 @@ using namespace std;
 
 int main()
 {
-    ifstream ifs("2-04.cpp");
+    ifstream ifs("ex10_29.cpp");
     istream_iterator<string> in(ifs), eof;
-    vector<string> vec;
-    while (in != eof)
-        vec.push_back(*in++);
+    vector<string> vec(in, eof);
     for (const auto &s : vec)
         cout << s << " ";
+    cout << endl;
     return 0;
 }
