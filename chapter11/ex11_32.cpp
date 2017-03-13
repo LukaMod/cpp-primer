@@ -12,10 +12,7 @@ int main()
     map<string, set<string>> works;
     for (const auto &au : authors)
     {
-        if (works.count(au.first))
-            works[au.first].insert(au.second);
-        else
-            works.insert({au.first, {au.second}});
+        works[au.first].insert(au.second);
     }
     for (const auto &w : works)
     {
