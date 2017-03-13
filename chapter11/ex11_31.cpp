@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     multimap<string, string> authors{
-        {"xyx", "flower"}, {"xyx", "tang"}, {"luka", "g"}, {"xyx", "sheep"}, {"uncle", "mine"}};
+        {"xyx", "flower"}, {"xyx", "tang"}, {"luka", "g"}, {"xyx", "sheep"}, {"uncle", "mine"}, {"xyx", "sheep"}};
     string author{"xyx"};
     string work{"sheep"};
 
@@ -17,10 +17,10 @@ int main()
     {
         if (found->second == work)
         {
-            authors.erase(found);
-            break;
+            found = authors.erase(found);
         }
-        ++found;
+        else
+            ++found;
         --count;
     }
     for (const auto &au : authors)
