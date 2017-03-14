@@ -1,4 +1,4 @@
-#include "head.h"
+#include "ex12_02.h"
 
 using namespace std;
 
