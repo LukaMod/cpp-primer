@@ -1,5 +1,5 @@
-#ifndef EX_12_27_B_H
-#define EX_12_27_B_H
+#ifndef QUERYRESULT_H_
+#define QUERYRESULT_H_
 
 #include <memory>
 #include <string>
@@ -8,22 +8,17 @@
 
 #include "ex12_27_a.h"
 
-using std::shared_ptr;
-using std::string;
-using std::vector;
-using std::set;
-
 class QueryResult
 {
-    friend std::ostream &print(std::ostream &, const QueryResult &);
+  friend std::ostream &print(std::ostream &, const QueryResult &);
 
-  public:
-    QueryResult(const string &, shared_ptr<set<TextQuery::line_no>>, shared_ptr<vector<string>>);
+public:
+  QueryResult(const std::string &, std::shared_ptr<std::set<TextQuery::line_no>>, std::shared_ptr<std::vector<std::string>>);
 
-  private:
-    string sought;
-    shared_ptr<set<TextQuery::line_no>> lines;
-    shared_ptr<vector<string>> file;
+private:
+  std::string sought;
+  std::shared_ptr<std::set<TextQuery::line_no>> lines;
+  std::shared_ptr<std::vector<std::string>> file;
 };
 
 #endif

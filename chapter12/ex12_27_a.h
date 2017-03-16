@@ -1,5 +1,5 @@
-#ifndef EX_12_27_A_H_
-#define EX_12_27_A_H_
+#ifndef TEXTQUERY_H_
+#define TEXTQUERY_H_
 
 #include <vector>
 #include <map>
@@ -8,26 +8,19 @@
 #include <memory>
 #include <fstream>
 
-#include "ex12_27_b.h"
-
-using std::vector;
-using std::map;
-using std::set;
-using std::string;
-using std::shared_ptr;
-using std::ifstream;
+class QueryResult;
 
 class TextQuery
 {
-  public:
-    using line_no = vector<string>::size_type;
+public:
+  using line_no = std::vector<std::string>::size_type;
 
-    TextQuery(ifstream &);
-    QueryResult query(const string &) const;
+  TextQuery(std::ifstream &);
+  QueryResult query(const std::string &) const;
 
-  private:
-    shared_ptr<vector<string>> file;
-    map<string, shared_ptr<set<line_no>>> wm;
+private:
+  std::shared_ptr<std::vector<std::string>> file;
+  std::map<std::string, std::shared_ptr<std::set<line_no>>> wm;
 };
 
 #endif

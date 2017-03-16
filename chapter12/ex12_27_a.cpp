@@ -1,6 +1,8 @@
-#include "ex12_27_a.h"
+#include "TextQuery.h"
 
 #include <sstream>
+
+#include "ex12_27_b.h"
 
 using namespace std;
 
