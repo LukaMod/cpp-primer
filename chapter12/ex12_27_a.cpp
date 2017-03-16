@@ -1,4 +1,4 @@
-#include "TextQuery.h"
+#include "ex12_27_a.h"
 
 #include <sstream>
 
