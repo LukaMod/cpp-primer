@@ -10,11 +10,12 @@ class numbered
         static int unique = 7;
         mysn = ++unique;
     }
+    numbered(const numbered &n) { mysn = n.mysn + 1; }
 
     int mysn;
 };
 
-void f(numbered s) { cout << s.mysn << endl; }
+void f(const numbered &s) { cout << s.mysn << endl; }
 
 int main()
 {
