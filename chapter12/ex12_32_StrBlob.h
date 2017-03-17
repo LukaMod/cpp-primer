@@ -1,5 +1,5 @@
-#ifndef STRBLOB_H_
-#define STRBLOB_H_
+#ifndef EX_12_32_STRBLOB_H_
+#define EX_12_32_STRBLOB_H_
 
 #include <vector>
 #include <memory>

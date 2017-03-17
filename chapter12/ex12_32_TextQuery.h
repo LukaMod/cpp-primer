@@ -1,5 +1,5 @@
-#ifndef TEXTQUERY_H_
-#define TEXTQUERY_H_
+#ifndef EX_12_32_TEXTQUERY_H_
+#define EX_12_32_TEXTQUERY_H_
 
 #include <vector>
 #include <map>

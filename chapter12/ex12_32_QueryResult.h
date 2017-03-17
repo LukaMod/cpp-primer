@@ -1,5 +1,5 @@
-#ifndef QUERYRESULT_H_
-#define QUERYRESULT_H_
+#ifndef EX_12_32_QUERYRESULT_H_
+#define EX_12_32_QUERYRESULT_H_
 
 #include <memory>
 #include <string>
