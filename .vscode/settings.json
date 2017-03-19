@@ -12,6 +12,10 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "functional": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "xiosbase": "cpp",
+        "forward_list": "cpp",
+        "initializer_list": "cpp",
+        "xmemory0": "cpp"
     }
 }
