@@ -10,8 +10,9 @@ public:
   HasPtr(const HasPtr &hp) : ps(new std::string(*hp.ps)), i(hp.i) {}
   HasPtr &operator=(const HasPtr &rhs)
   {
+    auto newp = std::string(*rhs.ps);
     delete ps;
-    ps = new std::string(*rhs.ps);
+    ps = newp;
     i = rhs.i;
     return *this;
   }
