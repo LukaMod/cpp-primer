@@ -1,5 +1,5 @@
-#ifndef EX_13_22_H_
-#define EX_13_22_H_
+#ifndef EX_13_30_H_
+#define EX_13_30_H_
 
 #include <string>
 #include <iostream>
