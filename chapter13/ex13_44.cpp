@@ -2,7 +2,9 @@
 
 #include <algorithm>
 
-std::allocator<char> String::alloc;
+using namespace std;
+
+allocator<char> String::alloc;
 
 String::String(const char *s)
 {
@@ -35,18 +37,17 @@ String::~String()
     free();
 }
 
-std::pair<char *, char *> String::alloc_n_copy(const char *b, const char *e)
+pair<char *, char *> String::alloc_n_copy(const char *b, const char *e)
 {
     auto str = alloc.allocate(e - b);
-    return {str, std::uninitialized_copy(b, e, str)};
+    return {str, uninitialized_copy(b, e, str)};
 }
 
 void String::free()
 {
     if (elem)
     {
-        for (auto p = end; p != elem;)
-            alloc.destroy(--p);
+        for_each(elem, end, [](const char &c) { alloc.destroy(c); });
         alloc.deallocate(elem, end - elem);
     }
 }
