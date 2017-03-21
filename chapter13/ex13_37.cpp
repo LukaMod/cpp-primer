@@ -1,7 +1,5 @@
 #include "ex13_37.h"
 
-#include <iostream>
-
 #include "ex13_36.h"
 
 Message::Message(const Message &m) : contents(m.contents), folders(m.folders)
