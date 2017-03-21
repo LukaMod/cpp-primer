@@ -1,0 +1,97 @@
+#include "ex14_23.h"
+
+#include <algorithm>
+
+using namespace std;
+
+allocator<string> StrVec::alloc;
+
+StrVec::StrVec(const StrVec &svec)
+{
+    auto newdata = alloc_n_copy(svec.begin(), svec.end());
+    free();
+    elements = newdata.first;
+    first_free = cap = newdata.second;
+}
+
+StrVec::StrVec(initializer_list<string> il)
+{
+    auto data = alloc_n_copy(il.begin(), il.end());
+    elements = data.first;
+    first_free = cap = data.second;
+}
+
+StrVec &StrVec::operator=(const StrVec &svec)
+{
+    auto data = alloc_n_copy(svec.begin(), svec.end());
+    free();
+    elements = data.first;
+    first_free = cap = data.second;
+    return *this;
+}
+
+StrVec::StrVec(StrVec &&rhs) noexcept : elements(rhs.elements), first_free(rhs.first_free), cap(rhs.cap)
+{
+    rhs.elements = rhs.first_free = rhs.cap = nullptr;
+}
+
+StrVec &StrVec::operator=(StrVec &&rhs) noexcept
+{
+    if (this != &rhs)
+    {
+        free();
+        elements = rhs.elements;
+        first_free = rhs.first_free;
+        cap = rhs.cap;
+        rhs.elements = rhs.first_free = rhs.cap = nullptr;
+    }
+    return *this;
+}
+
+StrVec::~StrVec()
+{
+    free();
+}
+
+StrVec &StrVec::operator=(std::initializer_list<std::string> il)
+{
+    auto data = alloc_n_copy(il.begin(), il.end());
+    free();
+    elements = data.first;
+    first_free = cap = data.second;
+}
+
+void StrVec::push_back(const string &s)
+{
+    chk_n_alloc();
+    alloc.construct(first_free++, s);
+}
+
+pair<string *, string *> StrVec::alloc_n_copy(const string *b, const string *e)
+{
+    auto data = alloc.allocate(e - b);
+    return {data, uninitialized_copy(b, e, data)};
+}
+
+void StrVec::free()
+{
+    if (elements)
+    {
+        for_each(elements, first_free, [](const string &s) { alloc.destroy(&s); });
+        alloc.deallocate(elements, cap - elements);
+    }
+}
+
+void StrVec::reallocate()
+{
+    auto newcapacity = size() ? 2 * size() : 1;
+    auto newdata = alloc.allocate(newcapacity);
+    auto dest = newdata;
+    auto elem = elements;
+    for (size_t i = 0; i != size(); ++i)
+        alloc.construct(dest++, move(*elem++));
+    free();
+    elements = newdata;
+    first_free = dest;
+    cap = elements + newcapacity;
+}
