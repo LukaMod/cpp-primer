@@ -47,7 +47,7 @@ void String::free()
 {
     if (elem)
     {
-        for_each(elem, end, [](const char &c) { alloc.destroy(c); });
+        for_each(elem, end, [](const char &c) { alloc.destroy(&c); });
         alloc.deallocate(elem, end - elem);
     }
 }
