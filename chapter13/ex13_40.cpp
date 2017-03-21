@@ -4,6 +4,8 @@
 
 using namespace std;
 
+std::allocator<string> StrVec::alloc;
+
 StrVec::StrVec(const StrVec &svec)
 {
     auto newdata = alloc_n_copy(svec.begin(), svec.end());
