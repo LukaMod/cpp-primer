@@ -1,7 +1,5 @@
 #include "ex13_36.h"
 
-#include <iostream>
-
 Folder::Folder(const Folder &f) : msgs(f.msgs)
 {
     add_to_Message(f);
