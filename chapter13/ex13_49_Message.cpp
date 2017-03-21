@@ -18,7 +18,7 @@ Message &Message::operator=(const Message &rhs)
 
 Message::Message(Message &&m) noexcept : contents(std::move(m.contents)), folders(std::move(m.folders))
 {
-    m.remove_from_Folders;
+    m.remove_from_Folders();
     m.folders.clear();
 }
 
