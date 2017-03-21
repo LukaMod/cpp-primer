@@ -4,8 +4,7 @@
 #include <vector>
 #include <exception>
 
-using std::string;
-using std::vector;
+using namespace std;
 
 StrBlobPtr::StrBlobPtr() : curr(0) {}
 
