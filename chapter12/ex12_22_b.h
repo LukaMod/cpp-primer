@@ -5,27 +5,23 @@
 #include <vector>
 #include <string>
 
-#include "ex12_22_a.h"
-
-using std::string;
-using std::vector;
-using std::weak_ptr;
+#include "StrBlob.h"
 
 class ConstStrBlobPtr
 {
-  public:
-    ConstStrBlobPtr();
-    ConstStrBlobPtr(const StrBlob &, size_t sz = 0);
+public:
+  ConstStrBlobPtr();
+  ConstStrBlobPtr(const StrBlob &, size_t sz = 0);
 
-    const string &deref() const;
-    ConstStrBlobPtr &incr();
-    bool unequal(const ConstStrBlobPtr &);
+  const std::string &deref() const;
+  ConstStrBlobPtr &incr();
+  bool unequal(const ConstStrBlobPtr &);
 
-  private:
-    weak_ptr<vector<string>> wptr;
-    size_t curr;
+private:
+  std::weak_ptr<std::vector<std::string>> wptr;
+  size_t curr;
 
-    shared_ptr<vector<string>> check(size_t, const string &) const;
+  std::shared_ptr<std::vector<std::string>> check(size_t, const std::string &) const;
 };
 
 #endif

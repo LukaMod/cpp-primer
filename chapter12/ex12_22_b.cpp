@@ -2,6 +2,8 @@
 
 #include "ex12_22_a.h"
 
+using namespace std;
+
 ConstStrBlobPtr::ConstStrBlobPtr() : curr(0) {}
 
 ConstStrBlobPtr::ConstStrBlobPtr(const StrBlob &a, size_t sz) : wptr(a.data), curr(sz) {}
