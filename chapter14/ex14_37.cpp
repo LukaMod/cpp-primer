@@ -8,7 +8,7 @@ class same
 {
   public:
     same(const int &j) : i(j) {}
-    bool operator()(const int &val)
+    bool operator()(const int &val) const
     {
         return i == val;
     }
