@@ -7,7 +7,6 @@ using namespace std;
 class same
 {
   public:
-    same() : i(0) {}
     same(const int &j) : i(j) {}
     bool operator()(const int &val)
     {
