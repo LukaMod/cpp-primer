@@ -5,7 +5,7 @@
 void Bulk_quote::debug() const
 {
     Quote::debug();
-    std::cout << "min_qty = " << quantity << "\n"
+    std::cout << "quantity = " << quantity << "\n"
               << "discount = " << discount << "\n";
 }
 
