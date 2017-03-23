@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-#include "StrBlob.h"
+#include "ex14_26_StrBlob.h"
 
 class ConstStrBlobPtr
 {
