@@ -9,6 +9,7 @@
 
 class Query
 {
+    friend Query operator~(const Query &);
     friend Query operator&(const Query &, const Query &);
     friend Query operator|(const Query &, const Query &);
 
