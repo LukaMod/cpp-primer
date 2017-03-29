@@ -8,7 +8,7 @@ template <typename C>
 void print(const C &c)
 {
     typedef typename C::size_type size_type;
-    auto iter = c.begin();
+    auto iter = c.cbegin();
     for (size_type i = 0; i != c.size(); ++i)
         cout << *iter++ << " ";
 }
