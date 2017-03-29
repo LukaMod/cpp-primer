@@ -3,6 +3,17 @@
 
 #include "ex16_12_Blob.h"
 
+template <typename>
+class BlobPtr;
+template <typename T>
+bool operator==(const BlobPtr<T> &, const BlobPtr<T> &);
+template <typename T>
+bool operator!=(const BlobPtr<T> &, const BlobPtr<T> &);
+template <typename T>
+bool operator<(const BlobPtr<T> &, const BlobPtr<T> &);
+template <typename T>
+bool operator>(const BlobPtr<T> &, const BlobPtr<T> &);
+
 template <typename T>
 class BlobPtr
 {
@@ -21,6 +32,11 @@ class BlobPtr
     BlobPtr operator--(int);
 
   private:
+    friend bool operator==<T>(const BlobPtr &, const BlobPtr &);
+    friend bool operator!=<T>(const BlobPtr &, const BlobPtr &);
+    friend bool operator<<T>(const BlobPtr &, const BlobPtr &);
+    friend bool operator><T>(const BlobPtr &, const BlobPtr &);
+
     std::shared_ptr<std::vector<T>> check(std::size_t, const std::string &) const;
 
     std::weak_ptr<std::vector<T>> wptr;
@@ -68,6 +84,34 @@ inline std::shared_ptr<std::vector<T>> BlobPtr<T>::check(std::size_t i, const st
     if (i >= ret->size())
         throw std::out_of_range(msg);
     return ret;
+}
+
+template <typename T>
+inline bool operator==(const BlobPtr<T> &lhs, const BlobPtr<T> &rhs)
+{
+    if (lhs.wptr.lock() != rhs.wptr.lock())
+        throw std::runtime_error("ptrs to different Blobs");
+    return lhs.curr == rhs.curr;
+}
+
+template <typename T>
+inline bool operator!=(const BlobPtr<T> &lhs, const BlobPtr<T> &rhs)
+{
+    return !(lhs == rhs);
+}
+
+template <typename T>
+inline bool operator<(const BlobPtr<T> &lhs, const BlobPtr<T> &rhs)
+{
+    if (lhs.wptr.lock() != rhs.wptr.lock())
+        throw std::runtime_error("ptrs to different Blobs");
+    return lhs.curr < rhs.curr;
+}
+
+template <typename T>
+inline bool operator>(const BlobPtr<T> &lhs, const BlobPtr<T> &rhs)
+{
+    return rhs > lhs;
 }
 
 #endif // !BLOBPTR_H_

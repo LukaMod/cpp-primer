@@ -7,6 +7,12 @@
 
 template <typename>
 class BlobPtr;
+template <typename>
+class Blob;
+template <typename T>
+bool operator==(const Blob<T> &, const Blob<T> &);
+template <typename T>
+bool operator!=(const Blob<T> &, const Blob<T> &);
 
 template <typename T>
 class Blob
@@ -29,6 +35,8 @@ class Blob
 
   private:
     friend class BlobPtr<T>;
+    friend bool operator==<T>(const Blob &, const Blob &);
+    friend bool operator!=<T>(const Blob &, const Blob &);
 
     void check(size_type, const std::string &) const;
 
@@ -95,6 +103,18 @@ inline void Blob<T>::check(size_type i, const std::string &msg) const
 {
     if (i >= data->size())
         throw std::out_of_range(msg);
+}
+
+template <typename T>
+inline bool operator==(const Blob<T> &lhs, const Blob<T> &rhs)
+{
+    return *lhs.data == *rhs.data;
+}
+
+template <typename T>
+inline bool operator!=(const Blob<T> &lhs, const Blob<T> &rhs)
+{
+    return !(lhs == rhs);
 }
 
 #endif // !BLOB_H_
