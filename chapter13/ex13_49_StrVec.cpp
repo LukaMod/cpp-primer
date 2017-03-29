@@ -81,7 +81,7 @@ void StrVec::reallocate()
     auto dest = newdata;
     auto elem = elements;
     for (size_t i = 0; i != size(); ++i)
-        alloc.construct(dest++, move(*elem++));
+        alloc.construct(dest++, std::move(*elem++));
     free();
     elements = newdata;
     first_free = dest;
