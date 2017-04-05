@@ -1,12 +1,12 @@
-#ifndef UNIQUE_POINTER_H_
-#define UNIQUE_POINTER_H_
+#ifndef EX_16_28_UNIQUE_POINTER_H_
+#define EX_16_28_UNIQUE_POINTER_H_
 
 #include <memory>
 
-template <typename>
+template <typename T, typename D>
 class unique_pointer;
 template <typename T, typename D>
-void swap(unique_pointer<T, > &, unique_pointer<T, > &);
+void swap(unique_pointer<T, D> &, unique_pointer<T, D> &);
 
 template <typename T, typename D = std::default_delete<T>>
 class unique_pointer
@@ -14,7 +14,7 @@ class unique_pointer
   public:
     unique_pointer() = default;
     unique_pointer<T, D>(const D &d) : del(d) {}
-    unique_pointer(T *q) : p(q) {}
+    unique_pointer(T *q) : p(q), del(D()) {}
     unique_pointer<T, D>(T *q, const D &d) : p(q), del(d) {}
 
     unique_pointer(const unique_pointer &) = delete;
@@ -48,7 +48,7 @@ class unique_pointer
 };
 
 template <typename T, typename D>
-inline unique_pointer<T, > &unique_pointer<T, >::operator=(unique_pointer &&rhs) noexcept
+inline unique_pointer<T, D> &unique_pointer<T, D>::operator=(unique_pointer &&rhs) noexcept
 {
     del(p);
     p = rhs.p;
@@ -58,7 +58,7 @@ inline unique_pointer<T, > &unique_pointer<T, >::operator=(unique_pointer &&rhs)
 }
 
 template <typename T, typename D>
-inline T *unique_pointer<T, >::release()
+inline T *unique_pointer<T, D>::release()
 {
     T *ret = p;
     del(p);
@@ -66,7 +66,7 @@ inline T *unique_pointer<T, >::release()
 }
 
 template <typename T, typename D>
-inline void swap(unique_pointer<T, > &lhs, unique_pointer<T, > &rhs)
+inline void swap(unique_pointer<T, D> &lhs, unique_pointer<T, D> &rhs)
 {
     using std::swap;
     swap(lhs.p, rhs.p);

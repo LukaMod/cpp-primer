@@ -1,10 +1,13 @@
-#ifndef SHARED_POINTER_H_
-#define SHARED_POINTER_H_
+#ifndef EX_16_28_SHARED_POINTER_H_
+#define EX_16_28_SHARED_POINTER_H_
 
 #include <functional>
 
 template <typename>
 class shared_pointer;
+
+template <typename T, typename... Args>
+shared_pointer<T> make_sharedptr(Args &&...);
 
 template <typename T>
 void swap(shared_pointer<T> &, shared_pointer<T> &);
@@ -14,10 +17,15 @@ class shared_pointer
 {
   public:
     shared_pointer() : p(nullptr) {}
-    explicit shared_pointer(T *ptr, std::function<void(T *)> d = nullptr) : p(ptr), del(d) {}
+    explicit shared_pointer(T *ptr, std::function<void(T *)> d = nullptr) : p(ptr), count(new std::size_t(1)), del(d) {}
 
     shared_pointer(const shared_pointer &sp) : p(sp.p), count(sp.count) { ++*sp.count; }
     shared_pointer(const shared_pointer &sp, std::function<void(T *)> d) : p(sp.p), count(sp.count), del(d) { ++*sp.count; }
+    shared_pointer(shared_pointer &&sp) noexcept : p(sp.p), count(sp.count), del(std::move(sp.del))
+    {
+        sp.p = nullptr;
+        sp.count = nullptr;
+    }
     shared_pointer &operator=(shared_pointer);
 
     operator bool() const { return p ? true : false; }
@@ -94,6 +102,12 @@ inline void swap(shared_pointer<T> &lhs, shared_pointer<T> &rhs)
     swap(lhs.p, rhs.p);
     swap(lhs.count, rhs.count);
     swap(lhs.del, rhs.del);
+}
+
+template <typename T, typename... Args>
+inline shared_pointer<T> make_sharedptr(Args &&... args)
+{
+    return shared_pointer<T>(new T(args...));
 }
 
 #endif // !SHARED_POINTER_H_
