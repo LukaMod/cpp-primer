@@ -19,6 +19,7 @@
         "xmemory0": "cpp",
         "map": "cpp",
         "memory": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "ostream": "cpp"
     }
 }
