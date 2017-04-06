@@ -2,6 +2,7 @@
 #define EX_16_28_SHARED_POINTER_H_
 
 #include <functional>
+#include <utility>
 
 template <typename>
 class shared_pointer;
@@ -107,7 +108,7 @@ inline void swap(shared_pointer<T> &lhs, shared_pointer<T> &rhs)
 template <typename T, typename... Args>
 inline shared_pointer<T> make_sharedptr(Args &&... args)
 {
-    return shared_pointer<T>(new T(args...));
+    return shared_pointer<T>(new T(std::forward<Args>(args)...));
 }
 
 #endif // !SHARED_POINTER_H_
