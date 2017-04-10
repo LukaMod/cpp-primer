@@ -1,51 +1,37 @@
-#include "Sales_data.h"
+#include "ex17_04.h"
 
-bool operator==(const Sales_data &lhs, const Sales_data &rhs)
+#include <algorithm>
+#include <numeric>
+
+using namespace std;
+
+vector<matches> findBook(const vector<vector<Sales_data>> &files, const string &book)
 {
-    return lhs.isbn() == rhs.isbn() &&
-           lhs.units_sold == rhs.units_sold &&
-           lhs.revenue == rhs.revenue;
+    vector<matches> ret;
+    for (auto it = files.cbegin(); it != files.cend(); ++it)
+    {
+        auto found = equal_range(it->cbegin(), it->cend(), book,
+                                 [](const Sales_data &lhs, const Sales_data &rhs) { return lhs.isbn() < rhs.isbn(); });
+        if (found.first != found.second)
+            ret.push_back(make_tuple(it - files.cbegin(), found.first, found.second));
+    }
+    return ret;
 }
 
-bool operator!=(const Sales_data &lhs, const Sales_data &rhs)
+void reportResults(istream &in, ostream &os, const vector<vector<Sales_data>> &files)
 {
-    return !(lhs == rhs);
-}
-
-Sales_data &Sales_data::operator+=(const Sales_data &rhs)
-{
-    units_sold += rhs.units_sold;
-    revenue += rhs.revenue;
-    return *this;
-}
-
-Sales_data &Sales_data::operator=(const std::string &s)
-{
-    *this = Sales_data(s);
-    return *this;
-}
-
-Sales_data operator+(const Sales_data &lhs, const Sales_data &rhs)
-{
-    Sales_data sum = lhs;
-    sum += rhs;
-    return sum;
-}
-
-std::istream &operator>>(std::istream &is, Sales_data &item)
-{
-    double price = 0;
-    is >> item.bookNo >> item.units_sold >> price;
-    if (is)
-        item.revenue = item.units_sold * price;
-    else
-        item = Sales_data();
-    return is;
-}
-
-std::ostream &operator<<(std::ostream &os, const Sales_data &item)
-{
-    os << item.isbn() << " " << item.units_sold << " "
-       << item.revenue;
-    return os;
+    string s;
+    while (in >> s)
+    {
+        auto trans = findBook(files, s);
+        if (trans.empty())
+        {
+            cout << s << " not found in any stores" << endl;
+            continue;
+        }
+        for (const auto &store : trans)
+            os << "store " << get<0>(store) << " sales: "
+               << accumulate(get<1>(store), get<2>(store), Sales_data(s))
+               << endl;
+    }
 }
