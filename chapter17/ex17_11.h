@@ -4,10 +4,6 @@
 #include <bitset>
 #include <string>
 #include <iostream>
-//
-//template<unsigned> class quiz;
-//template<unsigned N>
-//std::ostream& operator<<(std::ostream&, const quiz<N>&);
 
 template <unsigned N>
 class quiz
