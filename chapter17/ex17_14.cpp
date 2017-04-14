@@ -7,7 +7,7 @@ int main()
 {
     try
     {
-        regex r("[[:alnum:]] + \\.(cpp|cxx|cc$", regex::icase);
+        regex r("[[:alnum:] + \\.(cpp|cxx|cc$)", regex::icase);
     }
     catch (regex_error e)
     {
