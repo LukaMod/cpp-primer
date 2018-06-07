@@ -10,7 +10,7 @@ class numbered
         static int unique = 7;
         mysn = ++unique;
     }
-    numbered(const numbered &n) { mysn = n.mysn + 1; }
+    numbered(const numbered &n) : mysn(n.mysn + 1) {}
 
     int mysn;
 };
